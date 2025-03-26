@@ -5,10 +5,11 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const authRoute = require("./routes/signup");
-const loginRoute = require("./routes/login");
+const authRoute = require("./routes/authRoutes");
+const loginRoute = require("./routes/authRoutes");
+const middleWare = require("./middleware/Author");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 const uri = process.env.MONGO_URL;
 
 const app = express();
