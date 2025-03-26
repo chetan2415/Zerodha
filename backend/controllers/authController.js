@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const User = require("../models/userModel");
+const User = require("../models/UserModel");
 
 // Generate random OTP
 const generateOtp = () => Math.floor(100000 + Math.random() * 900000).toString();
