@@ -285,7 +285,8 @@ app.get("/Withdraw", async (req, res) => {
 });
 
 
-//console.log("MongoDB URI:", process.env.MONGO_URL); 
+const uri = process.env.MONGO_URL; 
+console.log("MongoDB URI:",uri);
 mongoose.connect(uri)
     .then(() => {
         console.log("DB connected successfully!");
