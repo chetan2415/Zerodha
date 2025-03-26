@@ -4,5 +4,5 @@ const AddFundsSchema = new mongoose.Schema({
     amount:{type:Number, required: true},
 },{ timestamps: true });
 
-const AddFundsModel = mongoose.model("AddFund", AddFundsSchema);
+const AddFundsModel = mongoose.model("AddFunds", AddFundsSchema);
 module.exports = AddFundsModel;
