@@ -28,8 +28,8 @@ const {HoldingsModel} = require("./models/HoldingsModel");
 const {PositionsModel} = require("./models/PositionsModel");
 const {OrdersModel} = require("./models/OrdersModel");
 //const {AccountModel} = require("./models/AccountModel");
-const {AddFundsModel} = require("./models/AddFundsModel");
-const {WithdrawModel} = require("./models/WithdrawModel");
+const AddFundsModel = require("./models/AddFundsModel");
+const WithdrawModel = require("./models/WithdrawModel");
 
 /*app.get("/Holding", async(req,res) =>{
     let tempHolding = [
