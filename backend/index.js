@@ -6,7 +6,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/authRoutes");
-const loginRoute = require("./routes/authRoutes");
 const accRoute = require("./routes/AccRoutes");
 
 const PORT = process.env.PORT || 5000;
@@ -197,9 +196,8 @@ const {WithdrawModel} = require("./models/WithdrawModel");
     res.send("done");
 }); */
 
-app.use("/", auth/authRoute);
-app.use("/",auth/loginRoute);
-app.use("/",accounts/accRoute);
+app.use("/auth",authRoute);
+app.use("/accounts",accRoute);
 
 
 app.get("/allHoldings", async(req,res) => {

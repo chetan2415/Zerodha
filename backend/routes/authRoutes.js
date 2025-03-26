@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-module.exports =  { 
+const { 
     signupWithOtp, 
     resendOtp, 
     verifyOtp, 
@@ -10,7 +10,6 @@ module.exports =  {
     verifyForgotOtp, 
     resetPassword 
 } = require("../controllers/authController");
-const middleWare = require("../middleware/Author");
 
 router.post("/signup-otp", signupWithOtp);
 router.post("/resend-otp", resendOtp);
