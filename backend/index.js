@@ -7,11 +7,11 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const authRoute = require("./routes/authRoutes");
 const loginRoute = require("./routes/authRoutes");
-const middleWare = require("./middleware/Author");
+const accRoute = require("./routes/AccRoutes");
 
 const PORT = process.env.PORT || 5000;
 const uri = process.env.MONGO_URL;
-
+                                     
 const app = express();
 
 app.use(cookieParser());
@@ -28,6 +28,9 @@ app.use(cors({
 const {HoldingsModel} = require("./models/HoldingsModel");
 const {PositionsModel} = require("./models/PositionsModel");
 const {OrdersModel} = require("./models/OrdersModel");
+//const {AccountModel} = require("./models/AccountModel");
+const {AddFundsModel} = require("./models/AddFundsModel");
+const {WithdrawModel} = require("./models/WithdrawModel");
 
 /*app.get("/Holding", async(req,res) =>{
     let tempHolding = [
@@ -194,8 +197,9 @@ const {OrdersModel} = require("./models/OrdersModel");
     res.send("done");
 }); */
 
-app.use("/", authRoute);
-app.use("/",loginRoute);
+app.use("/", auth/authRoute);
+app.use("/",auth/loginRoute);
+app.use("/",accounts/accRoute);
 
 
 app.get("/allHoldings", async(req,res) => {
@@ -219,12 +223,69 @@ app.post("/newOrder", async (req, res) => {
     });
 
     await newOrder.save();
-    res.status(201).json(newOrder);
+    res.status(201).json(newOrder); 
   } catch (error) {
     console.error("Error saving order:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+app.get("/newOrders", async (req, res) => {
+  try {
+    const orders = await OrdersModel.find(); 
+    res.status(200).json(orders);
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.post("/addFunds",async (req,res) => {
+  try{
+    const newFunds = new AddFundsModel({
+      amount: req.body.amount,
+    })
+    await newFunds.save();
+    res.status(201).json(newFunds);
+  }catch(error){
+    console.error("error saving funds:", error);
+    res.status(500).json({error: "Internal server error"});
+  }
+});
+
+app.get("/addFunds", async (req, res) => {
+  try {
+      const funds = await AddFundsModel.find().sort({ createdAt: -1 });
+      res.status(200).json(funds);
+  } catch (error) {
+      console.error("Error fetching funds history:", error);
+      res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.post("/Withdraw",async (req,res) => {
+  try{
+    const newWithdraw = new WithdrawModel({
+      withdrawAmount: req.body.withdrawAmount,
+    })
+    await newWithdraw.save();
+    res.status(201).json(newWithdraw);
+  }catch(error){
+    console.error("error saving funds:", error);
+    res.status(500).json({error: "Internal server error"});
+  }
+});
+
+app.get("/Withdraw", async (req, res) => {
+  try {
+      const withdrawals = await WithdrawModel.find().sort({ createdAt: -1 });
+      res.status(200).json(withdrawals);
+  } catch (error) {
+      console.error("Error fetching withdrawals history:", error);
+      res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 
 //console.log("MongoDB URI:", process.env.MONGO_URL); 
 mongoose.connect(uri)
