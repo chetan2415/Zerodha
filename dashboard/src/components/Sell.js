@@ -6,7 +6,7 @@ const Sell = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/newOrders");
+      const res = await axios.get("https://zerodha-backend-4ntj.onrender.com/newOrders");
       const sellOrders = res.data.filter(order => order.mode === "SELL");
       setAllSell(sellOrders);
     } catch (err) {
