@@ -19,7 +19,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/auth/login", formData, {
+      const res = await axios.post("https://zerodha-backend-4ntj.onrender.com/auth/login", formData, {
         headers: { "Content-Type": "application/json" },
       });
       localStorage.setItem("token", res.data.token);
@@ -28,7 +28,7 @@ function Login() {
       setFormData({ email: "", password: "" });
       console.log(formData);
       alert("login successful");
-      window.location.href = "http://localhost:3001/";
+      window.location.href = "https://zerodha-dashboard-h1bz.onrender.com/";
     } catch (error) {
       console.error("Login Error:", error.response?.data || error.message);
       alert("incorrect email or password");
