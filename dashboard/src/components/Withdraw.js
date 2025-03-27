@@ -22,7 +22,7 @@ function Withdraw() {
 // Function to fetch bank account status
 const fetchBankAccountStatus = () => {
     if (userMobile) {
-        axios.get(`http://localhost:5000/accounts/checkAccount?mobile=${userMobile}`)
+        axios.get(`https://zerodha-backend-4ntj.onrender.com/accounts/checkAccount?mobile=${userMobile}`)
             .then((res) => {
                 console.log("Bank account status response:", res.data);
                 setHasAccount(res.data.hasAccount);
@@ -51,7 +51,7 @@ useEffect(() => {
         }
 
         try {
-            const res = await axios.post("http://localhost:5000/Withdraw", { withdrawAmount: Number(withdrawAmount) });
+            const res = await axios.post("https://zerodha-backend-4ntj.onrender.com/Withdraw", { withdrawAmount: Number(withdrawAmount) });
             alert("Withdrawal successful!");
             setWithdrawAmount("");
         } catch (error) {
