@@ -45,7 +45,7 @@ function ForgetPass() {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:5000/auth/forgot-password", { email });
+      const response = await axios.post("https://zerodha-backend-4ntj.onrender.com/auth/forgot-password", { email });
       alert("OTP generated!");
       
       if(response.data.otp){
@@ -77,7 +77,7 @@ function ForgetPass() {
     }
   
     try {
-      await axios.post("http://localhost:5000/auth/verify-otp", { email, otp: enteredOtp });
+      await axios.post("https://zerodha-backend-4ntj.onrender.com/auth/verify-otp", { email, otp: enteredOtp });
       alert("OTP verified. You can reset your password now.");
       setStep(3);
     } catch (error) {
@@ -96,7 +96,7 @@ function ForgetPass() {
       return;
     }
     try {
-      await axios.post("http://localhost:5000/auth/reset-password", { email, newPassword });
+      await axios.post("https://zerodha-backend-4ntj.onrender.com/auth/reset-password", { email, newPassword });
       alert("Password reset successful! Please log in.");
       navigate("/Login");
     } catch (error) {
