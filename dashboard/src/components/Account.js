@@ -56,7 +56,7 @@ function Account() {
     }
     try {
       const response = await axios.post(
-        "http://localhost:5000/accounts/generate-otp",
+        "https://zerodha-backend-4ntj.onrender.com/accounts/generate-otp",
         { mobile }
       );
 
@@ -83,7 +83,7 @@ function Account() {
     }
     try {
       const response = await axios.post(
-        "http://localhost:5000/accounts/verify-otp",
+        "https://zerodha-backend-4ntj.onrender.com/accounts/verify-otp",
         { mobile, otp: enteredOtp }
       );
 
@@ -104,7 +104,7 @@ function Account() {
       return;
     }
     try {
-      const res = await axios.post("http://localhost:5000/accounts/newAccount", {
+      const res = await axios.post("https://zerodha-backend-4ntj.onrender.com/accounts/newAccount", {
         accountHolder,
         mobile,
         accountNumber,
