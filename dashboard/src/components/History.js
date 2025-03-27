@@ -7,8 +7,8 @@ function History() {
     useEffect(() => {
         const fetchTransactions = async () => {
             try {
-                const addFundsRes = await axios.get("http://localhost:5000/addFunds");
-                const withdrawRes = await axios.get("http://localhost:5000/Withdraw");
+                const addFundsRes = await axios.get("https://zerodha-backend-4ntj.onrender.com/addFunds");
+                const withdrawRes = await axios.get("https://zerodha-backend-4ntj.onrender.com/Withdraw");
 
                 const addFundsData = addFundsRes.data.map(txn => ({
                     id: txn._id,
