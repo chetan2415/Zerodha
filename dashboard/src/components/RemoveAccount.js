@@ -10,7 +10,7 @@ function Account() {
   useEffect(() => {
     const fetchAccount = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/accounts/checkAccount");
+        const { data } = await axios.get("https://zerodha-backend-4ntj.onrender.com/accounts/checkAccount");
         if (data?.hasAccount) {
           setAccount(data.account);
         } else {
@@ -38,7 +38,7 @@ function Account() {
     if (!window.confirm("Are you sure you want to remove this account?")) return;
 
     try {
-      await axios.delete("http://localhost:5000/accounts/removeAccount", {
+      await axios.delete("https://zerodha-backend-4ntj.onrender.com/accounts/removeAccount", {
         data: { mobile: account.mobile },
       });
 
