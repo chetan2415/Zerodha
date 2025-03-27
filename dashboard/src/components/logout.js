@@ -5,7 +5,7 @@ function Logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-    window.location.href = "http://localhost:3000";
+    window.location.href = "https://zerodha-frontend-app.onrender.com";
   }, []);
 
   return null;
