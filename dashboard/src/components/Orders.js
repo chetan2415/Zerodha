@@ -7,7 +7,7 @@ const Orders = () => {
   // Fetch Orders from Database
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/newOrders");
+      const res = await axios.get("https://zerodha-backend-4ntj.onrender.com/newOrders");
       //console.log("Fetched Orders:", res.data);
       setAllOrders(res.data);
     } catch (err) {
