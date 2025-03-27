@@ -56,7 +56,7 @@ function Hero() {
     }
   
     try {
-      const response = await axios.post("http://localhost:5000/auth/signup-otp", {
+      const response = await axios.post("https://zerodha-backend-4ntj.onrender.com/auth/signup-otp", {
         email: formData.email,
         mobile: formData.mobile,
         username: formData.username,
@@ -99,7 +99,7 @@ function Hero() {
   const handleResendOtp = async () => {
     try {
       // Capture the response from the axios POST request
-      const response = await axios.post("http://localhost:5000/auth/resend-otp", {
+      const response = await axios.post("https://zerodha-backend-4ntj.onrender.com/auth/resend-otp", {
         email: formData.email,
       });
   
@@ -125,7 +125,7 @@ function Hero() {
   
   const handleVerifyOtp = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/auth/verify-otp", {
+      const response = await axios.post("https://zerodha-backend-4ntj.onrender.com/auth/verify-otp", {
         email: formData.email,
         otp: formData.otp.join(""),
       });
@@ -144,7 +144,7 @@ function Hero() {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:5000/auth/signup", {
+      const response = await axios.post("https://zerodha-backend-4ntj.onrender.com/auth/signup", {
         email: formData.email,
         username: formData.username,
         password: formData.password,
