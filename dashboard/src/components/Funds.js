@@ -21,7 +21,7 @@ const Funds = () => {
   // Function to check bank account status
   const checkBankAccount = async (mobile) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/accounts/checkAccount?mobile=${mobile}`);
+      const { data } = await axios.get(`https://zerodha-backend-4ntj.onrender.com/accounts/checkAccount?mobile=${mobile}`);
       setHasAccount(data.hasAccount);
     } catch (error) {
       console.error("Error checking account status:", error);
