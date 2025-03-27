@@ -20,7 +20,7 @@ function AddAmount() {
   // Function to fetch bank account status
   const checkBankAccount = async (mobile) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/accounts/checkAccount?mobile=${mobile}`);
+      const { data } = await axios.get(`https://zerodha-backend-4ntj.onrender.com/accounts/checkAccount?mobile=${mobile}`);
       console.log("Bank account status response:", data);
       setHasAccount(data.hasAccount);
     } catch (error) {
@@ -35,7 +35,7 @@ function AddAmount() {
 
     try {
       // Re-check bank account status before proceeding
-      const { data } = await axios.get(`http://localhost:5000/accounts/checkAccount?mobile=${userMobile}`);
+      const { data } = await axios.get(`https://zerodha-backend-4ntj.onrender.com/accounts/checkAccount?mobile=${userMobile}`);
       if (!data.hasAccount) {
         alert("No bank account linked! Please add a bank account first.");
         navigate("/Account");
@@ -43,7 +43,7 @@ function AddAmount() {
       }
 
       // Proceed to add funds if account is present
-      await axios.post("http://localhost:5000/addFunds", { amount: Number(amount) });
+      await axios.post("https://zerodha-backend-4ntj.onrender.com/addFunds", { amount: Number(amount) });
       alert("Amount added successfully!");
       setAmount("");
     } catch (error) {
